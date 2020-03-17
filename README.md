@@ -44,3 +44,4 @@ The layers of the neural network used are the following
 3. The testing.py file gets a random sample from the testing dataset and plots
 an image similar to the one in the compression example, calculating the 
 loss (Mean Squared Error) of the compression performed.
+4. The neuralnet file is the saved trained autoencoder.
