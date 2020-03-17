@@ -17,7 +17,7 @@ The autoencoder managed to reduced the dimensions of the images to 15x15, which 
 a used storage space of only 22% of the original space occupied by each original image.
 
 After the compression, the autoencoder succeeded in generating recovered 32x32 images which
-are highly similar to the original ones
+are highly similar to the original ones.
 
 The layers of the neural network used are the following
 1. Encoding layers
@@ -36,7 +36,7 @@ The layers of the neural network used are the following
   - 2D Batch Normalization
   
 # Compression Example
-![Compression example](https://i.ibb.co/rHSD445/Screenshot-from-2020-03-17-03-57-59.png)# 
+![Compression example](https://i.ibb.co/rHSD445/Screenshot-from-2020-03-17-03-57-59.png)
 
 # About the files
 1. The AutoEncoder.py file implements the AutoEncoder class in torch.
