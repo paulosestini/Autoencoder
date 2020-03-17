@@ -12,6 +12,7 @@ The dataset used is the CIFAR-10, which constains 32x32 RGB images of the follow
  8. horse
  9. ship
  10. truck
+ 
 The autoencoder managed to reduced the dimensions of the images to 15x15, which represents
 a used storage space of only 22% of the original space occupied by each original image.
 
