@@ -36,4 +36,10 @@ The layers of the neural network used are the following
   - 2D Batch Normalization
   
 # Compression Example
-![Compression example](https://i.ibb.co/rHSD445/Screenshot-from-2020-03-17-03-57-59.png)
+![Compression example](https://i.ibb.co/rHSD445/Screenshot-from-2020-03-17-03-57-59.png)# 
+
+# About the files
+1. The AutoEncoder.py implements the AutoEncoder class in torch
+2. The trainig.py performs the training over the entire training dataset
+3. The testing.py gets a random sample from the testing dataset and plots
+an image similar to the one in the compression example
