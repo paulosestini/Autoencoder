@@ -12,7 +12,8 @@ training_data = datasets.CIFAR10(root='./dataset', train=True, download=True,tra
 training_dataloader = torch.utils.data.DataLoader(training_data, batch_size=50, shuffle=True,num_workers=4, pin_memory=True)
 
 # Instantiating the AutoEncoder neural network
-net = AutoEncoder.AutoEncoder().cuda()
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+net = AutoEncoder.AutoEncoder().to(device)
 
 # Setting the number of epochs in the training
 epochs = 5
@@ -36,8 +37,8 @@ for i in range(epochs):
         if not (count % 100): 
             print("Epoch: " + str(i+1) + " percentage: {:3.2f}%".format(100*current/total))
 
-        # Sending batch to GPU
-        x = batch.to('cuda')
+        # Sending batch to device (GPU or CPU)
+        x = batch.to(device)
         
         # Erasing the gradients stored
         optimizer.zero_grad()
