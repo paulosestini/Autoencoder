@@ -13,8 +13,12 @@ test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=T
 sample = next(iter(test_dataloader))[0]
 
 # Utility for reshaping the images in a format
-# That the matplotlib library can plot
+# That the matplotlib library can plot.
 def reshape_rgb(to_reshape):
+    """
+    Converts an RGB image with shape (3, M, N)
+    to shape (M, N, 3)
+    """
     M = to_reshape.shape[1]
     N = to_reshape.shape[2]
     reshaped = np.zeros((M, N, 3))
@@ -42,8 +46,7 @@ axes[1].imshow(img2)
 
 # Decoding image and displaying it
 decoded = net.decode(encoded)
-prediction_tensor = decoded.detach().numpy()[0]
-img3 = reshape_rgb(prediction_tensor)
+img3 = reshape_rgb(decoded.detach().numpy()[0])
 axes[2].imshow(img3)
 
 # Calculating and printing loss
