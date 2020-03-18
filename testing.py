@@ -12,41 +12,26 @@ test_data = datasets.CIFAR10(root='./dataset', train=False, download=True, trans
 test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=True)
 sample = next(iter(test_dataloader))[0]
 
-# Utility for reshaping the images in a format
-# That the matplotlib library can plot.
-def reshape_rgb(to_reshape):
-    """
-    Converts an RGB image with shape (3, M, N)
-    to shape (M, N, 3)
-    """
-    M = to_reshape.shape[1]
-    N = to_reshape.shape[2]
-    reshaped = np.zeros((M, N, 3))
-    for i in range(M):
-        for j in range(N):
-            for k in range(3):
-                reshaped[i][j][k] = to_reshape[k][i][j]
-    return reshaped
-
 # Displaying original sample image
-img1 = reshape_rgb(sample.numpy()[0])
+img1 = sample.numpy()[0].transpose(1, 2, 0)
 fig, axes = plt.subplots(3, 1)
 axes[0].imshow(img1)
 
 # Loading AutoEncoder
+device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
 net = AutoEncoder.AutoEncoder()
-loaded = torch.load('neuralnet', map_location=torch.device('cpu'))
+loaded = torch.load('neuralnet', map_location=device)
 net.load_state_dict(loaded)
 net.eval()
 
 # Encoding image and displaying it
 encoded = net.encode(sample)
-img2 = reshape_rgb(encoded.detach().numpy()[0])
+img2 = encoded.detach().numpy()[0].transpose(1, 2, 0)
 axes[1].imshow(img2)
 
 # Decoding image and displaying it
 decoded = net.decode(encoded)
-img3 = reshape_rgb(decoded.detach().numpy()[0])
+img3 = decoded.detach().numpy()[0].transpose(1, 2, 0)
 axes[2].imshow(img3)
 
 # Calculating and printing loss
