@@ -1,5 +1,5 @@
 # AutoEncoder for image compression
-This is a implementation of an autoencoder for image compression, made with Torch.
+This is an implementation of an autoencoder for image compression, made with Torch.
 
 The dataset used is the CIFAR-10, which contains 32x32 RGB images of the following classes:
  1. airplane
