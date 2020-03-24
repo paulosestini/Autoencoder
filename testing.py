@@ -4,7 +4,6 @@ import torch.nn as nn
 import torchvision
 import torchvision.datasets as datasets
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Getting random sample from testing set
 to_tensor = torchvision.transforms.ToTensor()
