@@ -1,4 +1,4 @@
-import AutoEncoder
+import Autoencoder
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -11,9 +11,9 @@ to_tensor = torchvision.transforms.ToTensor()
 training_data = datasets.CIFAR10(root='./dataset', train=True, download=True,transform=to_tensor)
 training_dataloader = torch.utils.data.DataLoader(training_data, batch_size=50, shuffle=True,num_workers=4, pin_memory=True)
 
-# Instantiating the AutoEncoder neural network
+# Instantiating the Autoencoder neural network
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-net = AutoEncoder.AutoEncoder().to(device)
+net = Autoencoder.Autoencoder().to(device)
 
 # Setting the number of epochs in the training
 epochs = 5
@@ -43,7 +43,7 @@ for i in range(epochs):
         # Erasing the gradients stored
         optimizer.zero_grad()
 
-        # Sending batch to the autoencoder and computing the loss
+        # Sending batch to the Autoencoder and computing the loss
         y = net(x)
         loss = criterion(y, x)
 
@@ -59,6 +59,6 @@ for i in range(epochs):
 
     print("Epoch: " + str(i+1) + " percentage: {:3.2f}%".format(100*current/total))
 
-# Saving our trained autoencoder
+# Saving our trained Autoencoder
 torch.save(net.state_dict(), "neuralnet")
 print("Done!")

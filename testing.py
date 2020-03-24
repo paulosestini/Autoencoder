@@ -1,4 +1,4 @@
-import AutoEncoder
+import Autoencoder
 import torch
 import torch.nn as nn
 import torchvision
@@ -17,9 +17,9 @@ img1 = sample.numpy()[0].transpose(1, 2, 0)
 fig, axes = plt.subplots(3, 1)
 axes[0].imshow(img1)
 
-# Loading AutoEncoder
+# Loading Autoencoder
 device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
-net = AutoEncoder.AutoEncoder()
+net = Autoencoder.Autoencoder()
 loaded = torch.load('neuralnet', map_location=device)
 net.load_state_dict(loaded)
 net.eval()
