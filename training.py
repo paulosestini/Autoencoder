@@ -35,7 +35,7 @@ for i in range(epochs):
     # Performing an epoch
     for batch, _ in training_dataloader:
         if not (count % 100): 
-            print("Epoch: " + str(i+1) + " percentage: {:3.2f}%".format(100*current/total))
+            print("Epoch: " + str(i+1) + " percentage: {:3.2f}%".format(100*current/total), end='\r', flush=True)
 
         # Sending batch to device (GPU or CPU)
         x = batch.to(device)
