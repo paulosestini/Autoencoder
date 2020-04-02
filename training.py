@@ -1,6 +1,7 @@
 import Autoencoder
 import torch
 import torch.nn as nn
+import torch.optim as optim
 import torchvision
 import torchvision.datasets as datasets
 
@@ -18,7 +19,7 @@ net = Autoencoder.Autoencoder().to(device)
 epochs = 5
 
 # We'll be using the Adam optimizer with learning rate 0.01
-optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
+optimizer = optim.Adam(net.parameters(), lr=0.01)
 
 # Instantiating our loss function, which will
 # be the Mean Squared Error
