@@ -1,7 +1,6 @@
 import Autoencoder
 import torch
 import torch.nn as nn
-import torch.optim as optim
 import torchvision
 import torchvision.datasets as datasets
 
