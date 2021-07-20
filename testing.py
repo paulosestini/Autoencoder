@@ -17,7 +17,7 @@ fig, axes = plt.subplots(3, 1)
 axes[0].imshow(img1)
 
 # Loading Autoencoder
-device = torch.device('gpu' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 net = Autoencoder.Autoencoder()
 loaded = torch.load('neuralnet', map_location=device)
 net.load_state_dict(loaded)
